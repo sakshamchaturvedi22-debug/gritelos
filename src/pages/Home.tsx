@@ -34,7 +34,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Gritelos helps OEMs, contract manufacturers, and industrial companies build marketing programs that generate real pipeline — not just impressions.
+              Gritelos helps OEMs, contract manufacturers, and industrial companies build marketing programs that generate real pipeline, not just impressions.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-6"
