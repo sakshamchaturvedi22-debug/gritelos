@@ -15,16 +15,40 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl"
           >
-            <h1 className="text-pure-white text-5xl md:text-7xl font-black leading-[1.1] mb-8">
-              B2B Marketing for Industrial Manufacturers. <span className="text-red-accent">Strategy First. Pipeline Always.</span>
-            </h1>
-            <p className="text-pure-white/70 text-xl md:text-2xl mb-12 max-w-2xl leading-relaxed">
+            <motion.h1 
+              className="text-pure-white text-5xl md:text-7xl font-black leading-[1.1] mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              GTM Engineering for Industrial Manufacturers. <motion.span 
+                className="text-red-accent"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >Strategy First. Pipeline Always.</motion.span>
+            </motion.h1>
+            <motion.p 
+              className="text-pure-white/70 text-xl md:text-2xl mb-12 max-w-2xl leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               Gritelos helps OEMs, contract manufacturers, and industrial companies build marketing programs that generate real pipeline — not just impressions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Button to="/process-pricing" variant="primary">See How We Work</Button>
-              <Button to="/services" variant="outline">View Our Services</Button>
-            </div>
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button to="/process-pricing" variant="primary">See How We Work</Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button to="/services" variant="outline">View Our Services</Button>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -52,13 +76,19 @@ export default function Home() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col"
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="flex flex-col p-8 rounded-lg bg-white border border-navy/5 shadow-sm hover:shadow-md transition-shadow"
               >
-                {item.icon}
+                <motion.div 
+                  className="text-red-accent mb-6"
+                  whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
+                >
+                  {item.icon}
+                </motion.div>
                 <h3 className="text-xl font-bold mb-4">{item.title}</h3>
                 <p className="text-body-gray/80 leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -81,8 +111,8 @@ export default function Home() {
             {[
               {
                 icon: <Target className="text-red-accent" size={24} />,
-                title: "B2B Marketing Strategy",
-                desc: "We audit, strategize, and build a documented plan before a single dollar is spent."
+                title: "GTM Strategy",
+                desc: "We audit, strategize, and build a documented go-to-market plan before a single dollar is spent."
               },
               {
                 icon: <Linkedin className="text-red-accent" size={24} />,
@@ -112,12 +142,36 @@ export default function Home() {
             ].map((service, i) => (
               <motion.div
                 key={i}
-                whileHover={{ y: -5 }}
-                className="p-10 bg-off-white border border-navy/5 rounded-sm flex flex-col h-full"
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                whileHover={{ 
+                  y: -8, 
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                  transition: { duration: 0.3 }
+                }}
+                className="p-10 bg-off-white border border-navy/5 rounded-sm flex flex-col h-full relative overflow-hidden group"
               >
-                <div className="mb-6">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-body-gray/80 mb-8 flex-grow">{service.desc}</p>
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-br from-red-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <motion.div 
+                  className="mb-6 relative z-10"
+                  whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.4 } }}
+                >
+                  {service.icon}
+                </motion.div>
+                <h3 className="text-xl font-bold mb-4 relative z-10">{service.title}</h3>
+                <p className="text-body-gray/80 mb-8 flex-grow relative z-10">{service.desc}</p>
+                <motion.div 
+                  className="text-red-accent font-bold text-sm uppercase tracking-wider relative z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={{ x: -10 }}
+                  whileHover={{ x: 0 }}
+                >
+                  Learn More →
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -130,17 +184,40 @@ export default function Home() {
       {/* Section 4: Industries We Serve */}
       <section className="bg-navy py-32 text-pure-white">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <span className="section-label">We Speak Your Language</span>
               <h2 className="text-pure-white text-4xl md:text-5xl font-black mb-8">
                 We don't just serve industrial companies — we come from deep immersion in this world.
               </h2>
-              <p className="text-pure-white/60 text-lg mb-12 leading-relaxed">
+              <motion.p 
+                className="text-pure-white/60 text-lg mb-12 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 We understand your buyers, your sales cycles, and your competitive landscape.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              </motion.p>
+            </motion.div>
+            <motion.div 
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              initial={{ x: 50, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               {[
                 "Contract Manufacturing",
                 "Industrial Equipment & Machinery",
@@ -151,14 +228,24 @@ export default function Home() {
               ].map((industry, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ scale: 1.02 }}
-                  className="p-6 bg-pure-white/5 border border-pure-white/10 rounded-sm text-center font-bold uppercase tracking-wider text-[13px]"
+                  whileHover={{ 
+                    scale: 1.05, 
+                    backgroundColor: "rgba(239, 68, 68, 0.1)",
+                    borderColor: "rgba(239, 68, 68, 0.3)",
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="p-6 bg-pure-white/5 border border-pure-white/10 rounded-sm text-center font-bold uppercase tracking-wider text-[13px] cursor-pointer"
                 >
                   {industry}
                 </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -166,12 +253,25 @@ export default function Home() {
       <section className="bg-pure-white py-32">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">How Gritelos Works</h2>
+            <motion.h2 
+              className="text-4xl md:text-5xl font-black mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >How Gritelos Works</motion.h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            {/* Connecting Line */}
-            <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-navy/5 z-0"></div>
+            {/* Animated Connecting Line */}
+            <motion.div 
+              className="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-navy/5 z-0"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.5 }}
+              style={{ transformOrigin: 'left' }}
+            />
             
             {[
               {
@@ -180,7 +280,7 @@ export default function Home() {
                 desc: "We deep-dive into your business, buyers, and competitive landscape. You walk away with a documented strategy."
               },
               {
-                num: "02",
+                num: "02", 
                 title: "Build & Execute",
                 desc: "We implement the plan across the right channels — content, LinkedIn, SEO, paid, web — all coordinated toward one goal: pipeline."
               },
@@ -190,13 +290,51 @@ export default function Home() {
                 desc: "We report obsessively, optimize monthly, and tie every metric back to revenue impact. No vanity metrics. Ever."
               }
             ].map((step, i) => (
-              <div key={i} className="relative z-10 text-center">
-                <div className="w-24 h-24 bg-pure-white border-2 border-red-accent rounded-full flex items-center justify-center mx-auto mb-8">
-                  <span className="text-red-accent text-3xl font-black">{step.num}</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
+              <motion.div 
+                key={i} 
+                className="relative z-10 text-center"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2, duration: 0.6 }}
+              >
+                <motion.div 
+                  className="w-24 h-24 bg-pure-white border-2 border-red-accent rounded-full flex items-center justify-center mx-auto mb-8 relative"
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: 360,
+                    transition: { duration: 0.6 }
+                  }}
+                >
+                  <motion.span 
+                    className="text-red-accent text-3xl font-black"
+                    whileHover={{ scale: 1.2 }}
+                  >
+                    {step.num}
+                  </motion.span>
+                  {/* Animated pulse effect */}
+                  <motion.div 
+                    className="absolute inset-0 border-2 border-red-accent rounded-full"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [1, 0, 1]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.5
+                    }}
+                  />
+                </motion.div>
+                <motion.h3 
+                  className="text-2xl font-bold mb-4"
+                  whileHover={{ scale: 1.05, color: "#EF4444" }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {step.title}
+                </motion.h3>
                 <p className="text-body-gray/80 leading-relaxed max-w-xs mx-auto">{step.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
           <div className="text-center mt-20">
@@ -206,12 +344,39 @@ export default function Home() {
       </section>
 
       {/* Section 6: Final CTA Banner */}
-      <section className="bg-red-accent py-24 text-pure-white text-center">
-        <div className="container mx-auto px-6">
-          <h2 className="text-pure-white text-4xl md:text-5xl font-black mb-12">
+      <section className="bg-red-accent py-24 text-pure-white text-center relative overflow-hidden">
+        <motion.div 
+          className="absolute inset-0 opacity-10"
+          animate={{ 
+            backgroundPosition: ['0px 0px', '40px 40px', '0px 0px']
+          }}
+          transition={{ 
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{ backgroundImage: 'radial-gradient(#FFFFFF 1px, transparent 1px)', backgroundSize: '40px 40px' }}
+        />
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.h2 
+            className="text-pure-white text-4xl md:text-5xl font-black mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             Ready to build a marketing program that actually closes deals?
-          </h2>
-          <Button to="/contact" variant="secondary">Let's Talk</Button>
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button to="/contact" variant="secondary">Let's Talk</Button>
+          </motion.div>
         </div>
       </section>
     </div>
