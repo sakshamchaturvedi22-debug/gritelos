@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  /* Gritelos Color Palette */
+  --color-navy: #1A1A2E;
+  --color-red-accent: #E63946;
+  --color-off-white: #F4F4F8;
+  --color-pure-white: #FFFFFF;
+  --color-body-gray: #4A4A6A;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-pure-white text-body-gray antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-navy font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-red-accent text-[12px] font-bold uppercase tracking-[0.15em] mb-4 block;
+  }
+}
