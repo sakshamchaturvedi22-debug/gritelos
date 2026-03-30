@@ -21,12 +21,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              GTM Engineering for Industrial Manufacturers. <motion.span 
-                className="text-red-accent"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-              >Strategy First. Pipeline Always.</motion.span>
+              GTM Engineering for Industrial Manufacturers.
             </motion.h1>
             <motion.p 
               className="text-pure-white/70 text-xl md:text-2xl mb-12 max-w-2xl leading-relaxed"
