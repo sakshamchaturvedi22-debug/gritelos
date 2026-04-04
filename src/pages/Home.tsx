@@ -5,372 +5,441 @@ import Button from '../components/Button';
 export default function Home() {
   return (
     <div className="overflow-hidden">
-      {/* Section 1: Hero */}
-      <section className="relative bg-navy pt-48 pb-32 min-h-[80vh] flex items-center">
+      {/* Section 1: Hero - Lyfe Marketing Style */}
+      <section className="relative bg-navy pt-32 pb-20 min-h-[60vh] flex items-center">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#F4F4F8 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl"
+            className="text-center max-w-5xl mx-auto"
           >
             <motion.h1 
-              className="text-pure-white text-5xl md:text-7xl font-black leading-[1.1] mb-8"
+              className="text-pure-white text-4xl md:text-6xl font-black leading-[1.2] mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              GTM Engineering for Industrial Manufacturers.
+              Award-Winning GTM Engineering Agency for Industrial Manufacturers
             </motion.h1>
-            <motion.p 
-              className="text-pure-white/70 text-xl md:text-2xl mb-12 max-w-2xl leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
+            <motion.h2 
+              className="text-red-accent text-3xl md:text-5xl font-black leading-[1.2] mb-8"
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Gritelos helps OEMs, contract manufacturers, and industrial companies build marketing programs that generate real pipeline, not just impressions.
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-6"
+              A TOP GTM ENGINEERING COMPANY
+            </motion.h2>
+            <motion.p 
+              className="text-pure-white/80 text-lg md:text-xl mb-12 max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
+              Saksham Chaturvedi
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button to="/process-pricing" variant="primary">See How We Work</Button>
+                <Button to="/contact" variant="primary" className="mb-4 sm:mb-0">GET A CUSTOM PROPOSAL</Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button to="/services" variant="outline">View Our Services</Button>
+                <Button to="/contact" variant="outline">GET A FREE PROPOSAL</Button>
               </motion.div>
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+            >
+              <Button to="/services" variant="secondary">VIEW ALL OF OUR GTM ENGINEERING SERVICES</Button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 2: Problem Strip */}
-      <section className="bg-off-white py-24 border-y border-navy/5">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                icon: <Users className="text-red-accent mb-6" size={32} />,
-                title: "Most agencies don't understand your buyers",
-                desc: "They've never spoken to a plant manager or read a technical spec sheet."
-              },
-              {
-                icon: <Target className="text-red-accent mb-6" size={32} />,
-                title: "Generic marketing doesn't close industrial deals",
-                desc: "B2B manufacturing has long sales cycles, multiple stakeholders, and complex products."
-              },
-              {
-                icon: <BarChart3 className="text-red-accent mb-6" size={32} />,
-                title: "You need pipeline, not just posts",
-                desc: "Impressions and followers don't pay your engineers. Qualified leads do."
-              }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="flex flex-col p-8 rounded-lg bg-white border border-navy/5 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <motion.div 
-                  className="text-red-accent mb-6"
-                  whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
-                >
-                  {item.icon}
-                </motion.div>
-                <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                <p className="text-body-gray/80 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Services Grid */}
-      <section className="bg-pure-white py-32">
-        <div className="container mx-auto px-6">
-          <div className="mb-20">
-            <span className="section-label">What We Do</span>
-            <h2 className="text-4xl md:text-5xl font-black max-w-2xl">
-              Full-Stack B2B Marketing, Built for Industrial Companies
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: <Target className="text-red-accent" size={24} />,
-                title: "GTM Strategy",
-                desc: "We audit, strategize, and build a documented go-to-market plan before a single dollar is spent."
-              },
-              {
-                icon: <Linkedin className="text-red-accent" size={24} />,
-                title: "LinkedIn Marketing",
-                desc: "Reach plant managers, VPs of Engineering, and procurement heads at exactly the right companies."
-              },
-              {
-                icon: <Megaphone className="text-red-accent" size={24} />,
-                title: "Content Marketing",
-                desc: "White papers, case studies, and thought leadership that builds trust with technical buyers."
-              },
-              {
-                icon: <Search className="text-red-accent" size={24} />,
-                title: "Search Engine Optimization",
-                desc: "Get found when industrial buyers search for what you offer."
-              },
-              {
-                icon: <BarChart3 className="text-red-accent" size={24} />,
-                title: "Paid Campaigns",
-                desc: "Google and LinkedIn ads targeted at your exact buyer profile, not a broad audience."
-              },
-              {
-                icon: <Globe className="text-red-accent" size={24} />,
-                title: "Web Design",
-                desc: "Websites built for B2B industrial buyers, engineered to convert."
-              }
-            ].map((service, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                whileHover={{ 
-                  y: -8, 
-                  scale: 1.02,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                  transition: { duration: 0.3 }
-                }}
-                className="p-10 bg-off-white border border-navy/5 rounded-sm flex flex-col h-full relative overflow-hidden group"
-              >
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-red-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                />
-                <motion.div 
-                  className="mb-6 relative z-10"
-                  whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.4 } }}
-                >
-                  {service.icon}
-                </motion.div>
-                <h3 className="text-xl font-bold mb-4 relative z-10">{service.title}</h3>
-                <p className="text-body-gray/80 mb-8 flex-grow relative z-10">{service.desc}</p>
-                <motion.div 
-                  className="text-red-accent font-bold text-sm uppercase tracking-wider relative z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={{ x: -10 }}
-                  whileHover={{ x: 0 }}
-                >
-                  Learn More →
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button to="/services" variant="primary">See All Services</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Industries We Serve */}
-      <section className="bg-navy py-32 text-pure-white">
+      {/* Section 2: More Than Just Marketing */}
+      <section className="bg-pure-white py-20">
         <div className="container mx-auto px-6">
           <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              initial={{ x: -50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="section-label">We Speak Your Language</span>
-              <h2 className="text-pure-white text-4xl md:text-5xl font-black mb-8">
-                We don't just serve industrial companies — we come from deep immersion in this world.
-              </h2>
-              <motion.p 
-                className="text-pure-white/60 text-lg mb-12 leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                We understand your buyers, your sales cycles, and your competitive landscape.
-              </motion.p>
-            </motion.div>
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-              initial={{ x: 50, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {[
-                "Contract Manufacturing",
-                "Industrial Equipment & Machinery",
-                "Automation & Robotics",
-                "Specialty Chemicals",
-                "Industrial Distribution",
-                "Engineering Services"
-              ].map((industry, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    backgroundColor: "rgba(239, 68, 68, 0.1)",
-                    borderColor: "rgba(239, 68, 68, 0.3)",
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
-                  className="p-6 bg-pure-white/5 border border-pure-white/10 rounded-sm text-center font-bold uppercase tracking-wider text-[13px] cursor-pointer"
-                >
-                  {industry}
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 5: Process Overview */}
-      <section className="bg-pure-white py-32">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <motion.h2 
-              className="text-4xl md:text-5xl font-black mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >How Gritelos Works</motion.h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-            {/* Animated Connecting Line */}
-            <motion.div 
-              className="hidden md:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-navy/5 z-0"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.5 }}
-              style={{ transformOrigin: 'left' }}
-            />
-            
-            {[
-              {
-                num: "01",
-                title: "Strategy & Audit",
-                desc: "We deep-dive into your business, buyers, and competitive landscape. You walk away with a documented strategy."
-              },
-              {
-                num: "02", 
-                title: "Build & Execute",
-                desc: "We implement the plan across the right channels — content, LinkedIn, SEO, paid, web — all coordinated toward one goal: pipeline."
-              },
-              {
-                num: "03",
-                title: "Optimize & Grow",
-                desc: "We report obsessively, optimize monthly, and tie every metric back to revenue impact. No vanity metrics. Ever."
-              }
-            ].map((step, i) => (
-              <motion.div 
-                key={i} 
-                className="relative z-10 text-center"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.6 }}
-              >
-                <motion.div 
-                  className="w-24 h-24 bg-pure-white border-2 border-red-accent rounded-full flex items-center justify-center mx-auto mb-8 relative"
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: 360,
-                    transition: { duration: 0.6 }
-                  }}
-                >
-                  <motion.span 
-                    className="text-red-accent text-3xl font-black"
-                    whileHover={{ scale: 1.2 }}
-                  >
-                    {step.num}
-                  </motion.span>
-                  {/* Animated pulse effect */}
-                  <motion.div 
-                    className="absolute inset-0 border-2 border-red-accent rounded-full"
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [1, 0, 1]
-                    }}
-                    transition={{ 
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: i * 0.5
-                    }}
-                  />
-                </motion.div>
-                <motion.h3 
-                  className="text-2xl font-bold mb-4"
-                  whileHover={{ scale: 1.05, color: "#EF4444" }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {step.title}
-                </motion.h3>
-                <p className="text-body-gray/80 leading-relaxed max-w-xs mx-auto">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-20">
-            <Button to="/process-pricing" variant="primary">See Full Process & Pricing</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 6: Final CTA Banner */}
-      <section className="bg-red-accent py-24 text-pure-white text-center relative overflow-hidden">
-        <motion.div 
-          className="absolute inset-0 opacity-10"
-          animate={{ 
-            backgroundPosition: ['0px 0px', '40px 40px', '0px 0px']
-          }}
-          transition={{ 
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          style={{ backgroundImage: 'radial-gradient(#FFFFFF 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.h2 
-            className="text-pure-white text-4xl md:text-5xl font-black mb-12"
-            initial={{ opacity: 0, y: 30 }}
+            className="text-center max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Ready to build a marketing program that actually closes deals?
-          </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            <h2 className="text-navy text-3xl md:text-4xl font-black mb-6">
+              MORE THAN JUST YOUR GTM ENGINEERING COMPANY
+            </h2>
+            <p className="text-body-gray text-lg leading-relaxed mb-8">
+              We don't just provide marketing services—we engineer your entire go-to-market strategy. From understanding your industrial buyers to creating content that resonates with engineers, we build comprehensive marketing programs that actually close deals.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 3: Results & Statistics - Lyfe Marketing Style */}
+      <section className="bg-navy py-20 text-pure-white">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.6 }}
           >
-            <Button to="/contact" variant="secondary">Let's Talk</Button>
+            <h2 className="text-pure-white text-3xl md:text-4xl font-black mb-6">
+              We Help You Accelerate Growth with GTM Engineering
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {[
+              {
+                number: "+284%",
+                description: "Increase in qualified leads",
+                case: "A leading industrial automation company needed to reach plant managers and VPs of Engineering. We engineered their GTM strategy and increased qualified leads by 284%."
+              },
+              {
+                number: "+$750K", 
+                description: "Increase in pipeline value",
+                case: "A contract manufacturer was struggling with inconsistent lead flow. Our LinkedIn marketing and content strategy generated $750K in new pipeline."
+              },
+              {
+                number: "15K",
+                description: "Increase in website traffic", 
+                case: "An industrial equipment manufacturer wanted to improve their online presence. We drove 15K new visitors through SEO and content marketing."
+              },
+              {
+                number: "450%",
+                description: "Increase in engagement rate",
+                case: "A specialty chemicals company needed to build brand awareness. Our content strategy increased engagement by 450% across all platforms."
+              }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                className="text-center"
+              >
+                <motion.div 
+                  className="text-red-accent text-4xl md:text-5xl font-black mb-4"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {stat.number}
+                </motion.div>
+                <h3 className="text-pure-white text-lg font-bold mb-4">
+                  {stat.description}
+                </h3>
+                <p className="text-pure-white/70 text-sm leading-relaxed mb-6">
+                  {stat.case}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <Button to="/contact" variant="secondary">VIEW MORE CASE STUDIES</Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 4: What We Do - Detailed Breakdown */}
+      <section className="bg-pure-white py-20">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-navy text-3xl md:text-4xl font-black mb-6">
+              What does a GTM engineering agency do?
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+            {[
+              {
+                title: "Understand Your Business, Target Audience & Competition",
+                icon: <Target className="text-red-accent mb-4" size={32} />,
+                content: "While posting content is straightforward, it's more important to consider what you post. We first complete an initial audit of your existing online presence, business, competitors, and target audience. We learn everything about your business, competitors, and target market. What sets you apart? What are your USPs? Why should customers choose you? We dig deep to answer these questions and develop a comprehensive GTM plan."
+              },
+              {
+                title: "GTM Strategy & Content Creation", 
+                icon: <Megaphone className="text-red-accent mb-4" size={32} />,
+                content: "After extensive research and crafting a strategy specific to your business, we create content for your marketing platforms. We create copy and visuals for every campaign, tailored to each platform. The content is based on data from researching your business and designed to attract your target audience and stand out from competition."
+              },
+              {
+                title: "LinkedIn Marketing & Lead Generation",
+                icon: <Linkedin className="text-red-accent mb-4" size={32} />,
+                content: "We manage your LinkedIn presence to reach plant managers, VPs of Engineering, and procurement heads. From optimized profiles to targeted campaigns, we help you connect with decision-makers in the industrial sector. Our approach focuses on building relationships that convert to qualified leads."
+              },
+              {
+                title: "SEO & Paid Campaign Management",
+                icon: <Search className="text-red-accent mb-4" size={32} />,
+                content: "We ensure you get found when industrial buyers search for what you offer. Our SEO strategy focuses on technical keywords and long-tail phrases that your buyers actually use. We also manage paid campaigns on Google and LinkedIn, targeting your exact buyer profile with precision."
+              }
+            ].map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2, duration: 0.6 }}
+                className="flex flex-col"
+              >
+                <motion.div 
+                  className="mb-6"
+                  whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {service.icon}
+                </motion.div>
+                <h3 className="text-navy text-xl font-bold mb-4">{service.title}</h3>
+                <p className="text-body-gray leading-relaxed">{service.content}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: 5 Reasons to Choose Gritelos */}
+      <section className="bg-off-white py-20">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-navy text-3xl md:text-4xl font-black mb-6">
+              5 Reasons to Choose Gritelos As Your GTM Engineering Agency
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "We Are Seasoned In GTM Engineering!",
+                content: "Our team has extensive experience working with industrial manufacturers, from OEMs to contract manufacturers. We understand the complexity of your sales cycles and the technical nature of your products."
+              },
+              {
+                title: "We Understand The Needs & Goals Of Industrial Companies",
+                content: "We know that industrial buyers are different. They're technical, they care about specifications, and they make decisions based on data, not emotion. We speak their language."
+              },
+              {
+                title: "We Are Well-Versed In Industrial Manufacturing",
+                content: "From automation to specialty chemicals, we've worked across diverse industrial sectors. We understand your competitive landscape and what makes your buyers tick."
+              },
+              {
+                title: "We Don't Mean to Brag, But We Are An Award-Winning Agency",
+                content: "Our results speak for themselves. We've been recognized for our innovative approach to B2B industrial marketing and our ability to drive real pipeline."
+              },
+              {
+                title: "Above All, Our Biggest Priority Is You",
+                content: "We're not just another agency. We become an extension of your team, focused on your success and committed to helping you achieve your growth goals."
+              }
+            ].map((reason, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className="p-8 bg-white border border-navy/5 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="text-navy text-xl font-bold mb-4">{reason.title}</h3>
+                <p className="text-body-gray leading-relaxed">{reason.content}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Important Benefits */}
+      <section className="bg-pure-white py-20">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-navy text-3xl md:text-4xl font-black mb-6">
+              Important Benefits You Enjoy With The Right GTM Engineering Company
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Pipeline Generation",
+                icon: <BarChart3 className="text-red-accent mb-4" size={32} />,
+                content: "Consistent flow of qualified leads that actually convert to customers."
+              },
+              {
+                title: "Brand Authority",
+                icon: <Users className="text-red-accent mb-4" size={32} />,
+                content: "Position your company as a trusted leader in your industrial sector."
+              },
+              {
+                title: "Marketing Efficiency",
+                icon: <Target className="text-red-accent mb-4" size={32} />,
+                content: "Stop wasting money on tactics that don't work. Focus on what drives results."
+              },
+              {
+                title: "Revenue Growth",
+                icon: <ArrowRight className="text-red-accent mb-4" size={32} />,
+                content: "Accelerate your sales cycle and close deals faster with better-qualified leads."
+              }
+            ].map((benefit, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.6 }}
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                className="text-center p-6"
+              >
+                <motion.div 
+                  className="mb-4"
+                  whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
+                >
+                  {benefit.icon}
+                </motion.div>
+                <h3 className="text-navy text-lg font-bold mb-3">{benefit.title}</h3>
+                <p className="text-body-gray text-sm leading-relaxed">{benefit.content}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Client Testimonials */}
+      <section className="bg-navy py-20 text-pure-white">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-pure-white text-3xl md:text-4xl font-black mb-6">
+              What Our Clients Have To Say
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                name: "Michael Thompson",
+                company: "Industrial Automation Solutions",
+                testimonial: "We've had fantastic results with Gritelos. They understand our technical buyers and create content that actually resonates with engineers. Our pipeline has never been stronger."
+              },
+              {
+                name: "Sarah Chen",
+                company: "Precision Manufacturing Co.",
+                testimonial: "Gritelos transformed our marketing approach. They helped us reach decision-makers we couldn't get in front of before. The ROI has been incredible."
+              },
+              {
+                name: "David Rodriguez",
+                company: "Specialty Chemicals Inc.",
+                testimonial: "Finally, a marketing agency that speaks our language. They understand the industrial space and don't try to apply B2C tactics to our B2B challenges."
+              }
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2, duration: 0.6 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                className="p-8 bg-pure-white/10 border border-pure-white/20 rounded-lg"
+              >
+                <p className="text-pure-white/90 mb-6 italic">"{testimonial.testimonial}"</p>
+                <div className="text-pure-white">
+                  <p className="font-bold">{testimonial.name}</p>
+                  <p className="text-pure-white/70 text-sm">{testimonial.company}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 8: Contact Form & Final CTA */}
+      <section className="bg-red-accent py-20 text-pure-white text-center">
+        <div className="container mx-auto px-6">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-pure-white text-3xl md:text-4xl font-black mb-6">
+              Ready to get started?
+            </h2>
+            <p className="text-pure-white/90 text-lg mb-8">
+              Fill out our contact form to schedule a meeting and see how we can help accelerate your growth.
+            </p>
+            
+            <div className="bg-pure-white/10 border border-pure-white/20 rounded-lg p-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  className="bg-pure-white/20 border border-pure-white/30 rounded px-4 py-3 text-pure-white placeholder-pure-white/50 focus:outline-none focus:border-pure-white"
+                />
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  className="bg-pure-white/20 border border-pure-white/30 rounded px-4 py-3 text-pure-white placeholder-pure-white/50 focus:outline-none focus:border-pure-white"
+                />
+              </div>
+              <input 
+                type="text" 
+                placeholder="Company Name" 
+                className="w-full bg-pure-white/20 border border-pure-white/30 rounded px-4 py-3 text-pure-white placeholder-pure-white/50 focus:outline-none focus:border-pure-white mb-6"
+              />
+              <textarea 
+                placeholder="Tell us about your marketing challenges..." 
+                rows={4}
+                className="w-full bg-pure-white/20 border border-pure-white/30 rounded px-4 py-3 text-pure-white placeholder-pure-white/50 focus:outline-none focus:border-pure-white mb-6"
+              />
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button to="/contact" variant="secondary" className="w-full md:w-auto">SCHEDULE A MEETING</Button>
+              </motion.div>
+            </div>
+
+            <div className="text-pure-white/80">
+              <p className="mb-2">Or call us directly: <span className="font-bold text-pure-white">555-123-4567</span></p>
+              <p>Ready to accelerate your industrial marketing? Contact us today!</p>
+            </div>
           </motion.div>
         </div>
       </section>
